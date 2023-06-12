@@ -71,7 +71,7 @@ button {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 80%;
+        height: auto;
       }
       
       .main {
@@ -79,6 +79,7 @@ button {
         flex-wrap: wrap;
         justify-content: center;
         align-items: flex-start;
+        flex-wrap: nowrap;
       }
       
       .textarea-container {
