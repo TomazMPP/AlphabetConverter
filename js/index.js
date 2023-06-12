@@ -50,78 +50,34 @@ const basicAlphabetMapping = {
   'ш': 'w',
   'кс': 'x',
   'ы': 'y',
-  'з': 'z',
-  'Э': 'E',
-  'э': 'e',
-};
-
-const complexAlphabetMapping = {
-  'ЩИ': 'QI',
-  'щи': 'qi',
-  'Ще': 'Qe',
-  'ще': 'qe',
-  'ЙО': 'IO',
-  'йо': 'io',
-  'Йу': 'IU',
-  'йу': 'iu',
-  'ЙА': 'IA',
-  'йа': 'ia',
-  'ЦУ': 'TSU',
-  'цу': 'tsu',
-  'Ё': 'YO',
-  'ё': 'yo',
-  'Ю': 'YU',
-  'ю': 'yu',
-  'Я': 'YA',
-  'я': 'ya',
+  'з': 'z'
 };
 
 const convertCyrillicToLatin = (text) => {
   let convertedText = '';
-  let i = 0;
-  while (i < text.length) {
-    let currentChar = text[i];
-    let nextChar = text[i + 1];
-    let nextNextChar = text[i + 2];
-    if (nextNextChar && complexAlphabetMapping[nextChar + nextNextChar]) {
-      convertedText += complexAlphabetMapping[nextChar + nextNextChar];
-      i += 3;
-    } else if (complexAlphabetMapping[currentChar + nextChar]) {
-      convertedText += complexAlphabetMapping[currentChar + nextChar];
-      i += 2;
-    } else if (basicAlphabetMapping[currentChar]) {
+  let currentChar = '';
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    currentChar += char;
+    if (basicAlphabetMapping[currentChar]) {
       convertedText += basicAlphabetMapping[currentChar];
-      i++;
-    } else {
-      convertedText += currentChar;
-      i++;
+      currentChar = '';
     }
+  }
+  if (currentChar) {
+    convertedText += currentChar;
   }
   return convertedText;
 };
 
 const convertLatinToCyrillic = (text) => {
   let convertedText = '';
-  let i = 0;
-  while (i < text.length) {
-    let currentChar = text[i];
-    let nextChar = text[i + 1];
-    let nextNextChar = text[i + 2];
-    if (nextNextChar && Object.values(complexAlphabetMapping).includes(currentChar + nextChar + nextNextChar)) {
-      const complexKey = Object.keys(complexAlphabetMapping).find(key => complexAlphabetMapping[key] === currentChar + nextChar + nextNextChar);
-      convertedText += complexKey;
-      i += 3;
-    } else if (Object.values(complexAlphabetMapping).includes(currentChar + nextChar)) {
-      const complexKey = Object.keys(complexAlphabetMapping).find(key => complexAlphabetMapping[key] === currentChar + nextChar);
-      convertedText += complexKey;
-      i += 2;
-    } else if (basicAlphabetMapping[currentChar]) {
-      convertedText += basicAlphabetMapping[currentChar];
-      i++;
-    } else {
-      convertedText += currentChar;
-      i++;
-    }
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    const convertedChar = Object.keys(basicAlphabetMapping).find(
+      key => basicAlphabetMapping[key] === char
+    ) || char;
+    convertedText += convertedChar;
   }
   return convertedText;
 };
