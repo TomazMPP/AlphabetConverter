@@ -50,7 +50,9 @@ const basicAlphabetMapping = {
   'ш': 'w',
   'кс': 'x',
   'ы': 'y',
-  'з': 'z'
+  'з': 'z',
+  'Э': 'E',
+  'э': 'e',
 };
 
 const convertCyrillicToLatin = (text) => {
