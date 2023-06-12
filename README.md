@@ -9,9 +9,7 @@
 </p>
 
 <p align="center">
-   <img width="800" style="border-radius: 20px" src="/assets/landing.png" />
-</p>
-<p align="center">
+   <img width="600" style="border-radius: 20px" src="/assets/landing.png" />
    <img width="400" style="border-radius: 20px" src="/assets/landingresponsive.png" />
 </p>
 
