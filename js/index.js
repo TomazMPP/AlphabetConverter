@@ -74,8 +74,6 @@ const complexAlphabetMapping = {
   'ю': 'yu',
   'Я': 'YA',
   'я': 'ya',
-  'YA': 'Я',
-  'ya': 'я',
 };
 
 const convertCyrillicToLatin = (text) => {
