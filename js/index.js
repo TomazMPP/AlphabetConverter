@@ -62,6 +62,9 @@ const convertCyrillicToLatin = (text) => {
     if (basicAlphabetMapping[currentChar]) {
       convertedText += basicAlphabetMapping[currentChar];
       currentChar = '';
+    } else {
+      convertedText += currentChar;
+      currentChar = '';
     }
   }
   if (currentChar) {
@@ -69,6 +72,7 @@ const convertCyrillicToLatin = (text) => {
   }
   return convertedText;
 };
+
 
 const convertLatinToCyrillic = (text) => {
   let convertedText = '';
